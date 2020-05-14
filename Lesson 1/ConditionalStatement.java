@@ -1,37 +1,35 @@
 public class ConditionalStatement {
 
     public static void main(String[] args) {
+        int age = 21;
+        char sex = 'M';
+        double height = 1.75d;
+        char firstLetterName = 'W';
 
-        int Age = 21;
-        char Sex = 'M';
-        double Height = 1.75d;
-        char FirstLetterName = 'W';
-
-        if (Age > 20) {
+        if (age > 20) {
             System.out.println("Возраст больше 21 года.");
         }
 
-        if (Sex == 'M') {
+        if (sex == 'M') {
             System.out.println("Пол мужской");
         }
 
-        if (Sex != 'M') {
+        if (sex != 'M') {
             System.out.println("Пол НЕ мужской");
         }
 
-        if (Height < 1.80) {
+        if (height < 1.80) {
             System.out.println("Получается ниже 180 см.");
         } else {
             System.out.println("Получается выше 180 см.");
         }
 
-        if(FirstLetterName == 'M'){
+        if (firstLetterName == 'M') {
             System.out.println("Имя начинается на \"М\"");
-        } else if(FirstLetterName == 'I'){
+        } else if (firstLetterName == 'I') {
             System.out.println("Имя начинается на \"I\"");
         } else {
             System.out.println("Не понятно как начинается имя..");
         }
-
     }
 }
