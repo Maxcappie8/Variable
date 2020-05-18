@@ -2,10 +2,10 @@ public class MyFirstGame {
 
     public static void main(String[] args) {
         int randomNumber = 10;
-        // начальное значение, введеное играком
+        // начальное значение, введенное играком
         int userNumber = 4;
         do {
-            // проверка введеного играком числа
+            // проверка введенного играком числа
             if (userNumber > randomNumber) {
                 System.out.println("Введенное вами число больше того, что загадал компьютер");
                 userNumber--;
