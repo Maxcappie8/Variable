@@ -1,18 +1,19 @@
 public class MyFirstGame {
 
     public static void main(String[] args) {
-        int randomNumber = 40;
-        int usersNumber;
+        int randomNumber = 10;
+        // начальное значение, введеное играком
+        int userNumber = 4;
         do {
-            // игрок вводит число
-            usersNumber = 40;
             // проверка введеного играком числа
-            if (usersNumber > randomNumber) {
+            if (userNumber > randomNumber) {
                 System.out.println("Введенное вами число больше того, что загадал компьютер");
-            } else if (usersNumber < randomNumber) {
+                userNumber--;
+            } else if (userNumber < randomNumber) {
                 System.out.println("Введенное вами число меньше того, что загадал компьютер");
+                userNumber++;
             }
-        } while (randomNumber != usersNumber);
+        } while (randomNumber != userNumber);
         System.out.println("Вы угадали!");
     }
 }
