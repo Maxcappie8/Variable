@@ -19,7 +19,11 @@ public class Wolf {
     }
 
     String howl() {
-        System.out.println(name + " издает вой: ауууу");
+        System.out.println(name + " издает вой: \"ауууу\"");
         return "ayyyy";
+    }
+
+    void hunt() {
+        System.out.println(name + " вышел на охоту..");
     }
 }
