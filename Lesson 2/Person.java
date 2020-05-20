@@ -7,15 +7,15 @@ public class Person {
     float weight = 88.8f;
 
     void move() {
-
+        System.out.println(name + "пошел");
     }
 
     void sit() {
-
+        System.out.println(name + "сел");
     }
 
     void run() {
-
+        System.out.println(name + "побежал");
     }
 
     String talk() {
@@ -23,6 +23,7 @@ public class Person {
     }
 
     boolean learnJava() {
+        System.out.println(name + "Учит Java");
         return true;
     }
 }
