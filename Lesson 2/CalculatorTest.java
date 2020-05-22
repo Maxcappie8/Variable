@@ -2,20 +2,9 @@ import java.util.Scanner;
 
 public class CalculatorTest {
 
-    public String validationUserResponse(String userResponse) {
-        Scanner scanner = new Scanner(System.in);
-        if ((userResponse.equalsIgnoreCase("да")) || (userResponse.equalsIgnoreCase("нет"))) {
-            return userResponse;
-        } else {
-            System.out.print("Хотите продолжить? [да/нет]: ");
-            return validationUserResponse(scanner.next());
-        }
-    }
-
     public static void main(String[] args) {
         Calculator calc = new Calculator();
         Scanner scanner = new Scanner(System.in);
-        CalculatorTest ct = new CalculatorTest();
 
         String userResponse;
         do {
@@ -27,7 +16,17 @@ public class CalculatorTest {
             calc.setSecondNumder(scanner.nextInt());
             System.out.println("Результат: " + calc.calculate());
             System.out.print("Хотите продолжить? [да/нет]: ");
-            userResponse = ct.validationUserResponse(scanner.next());
+            userResponse = validationUserResponse(scanner.next());
         } while (userResponse.equalsIgnoreCase("да"));
+    }
+
+    private static String validationUserResponse(String userResponse) {
+        Scanner scanner = new Scanner(System.in);
+        if ((userResponse.equalsIgnoreCase("да")) || (userResponse.equalsIgnoreCase("нет"))) {
+            return userResponse;
+        } else {
+            System.out.print("Хотите продолжить? [да/нет]: ");
+            return validationUserResponse(scanner.next());
+        }
     }
 }

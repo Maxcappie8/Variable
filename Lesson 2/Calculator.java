@@ -8,14 +8,6 @@ public class Calculator {
         return firstNumder;
     }
 
-    public char getOperation() {
-        return operation;
-    }
-
-    public int getSecondNumder() {
-        return secondNumder;
-    }
-
     public void setFirstNumder(int firstNumder) {
         if (firstNumder > -1) {
             this.firstNumder = firstNumder;
@@ -24,16 +16,8 @@ public class Calculator {
         }
     }
 
-    public void setSecondNumder(int secondNumder) {
-        if ((secondNumder > -1)) {
-            if (((operation == '/') || (operation == '%')) && (secondNumder == 0)) {
-                System.out.println("Деление на 0. Введите корректное число!");
-            } else {
-                this.secondNumder = secondNumder;
-            }
-        } else {
-            System.out.println("Используйте целые положительные числа!");
-        }
+    public char getOperation() {
+        return operation;
     }
 
     public void setOperation(char operation) {
@@ -45,41 +29,50 @@ public class Calculator {
         }
     }
 
+    public int getSecondNumder() {
+        return secondNumder;
+    }
+
+    public void setSecondNumder(int secondNumder) {
+        if (secondNumder > -1) {
+            if (((operation == '/') || (operation == '%')) && (secondNumder == 0)) {
+                System.out.println("Деление на 0. Введите корректное число!");
+            } else {
+                this.secondNumder = secondNumder;
+            }
+        } else {
+            System.out.println("Используйте целые положительные числа!");
+        }
+    }
+
     public int calculate() {
-        int resault = -1;
+        int resault = 0;
         switch (operation) {
             case '+':
-                firstNumder += secondNumder;
-                resault = firstNumder;
-                break;
+                return firstNumder + secondNumder;
             case '-':
-                firstNumder -= secondNumder;
-                resault = firstNumder;
-                break;
+                return firstNumder - secondNumder;
             case '*':
-                firstNumder *= secondNumder;
-                resault = firstNumder;
-                break;
+                return firstNumder * secondNumder;
             case '^':
-                resault = 1;
-                for (int i = 0; i < secondNumder; i++) {
-                    resault *= firstNumder;
-                }
-                break;
+                return exp(firstNumder,secondNumder);
             case '/':
                 if (secondNumder != 0) {
-                    firstNumder /= secondNumder;
-                    resault = firstNumder;
+                    return firstNumder / secondNumder;
                 }
-                break;
             case '%':
                 if (secondNumder != 0) {
-                    firstNumder %= secondNumder;
-                    resault = firstNumder;
+                    return firstNumder % secondNumder;
                 }
-                break;
             default:
-                break;
+        }
+        return resault;
+    }
+
+    private int exp(int firstNumder, int secondNumder) {
+        int resault = 1;
+        for (int i = 0; i < secondNumder; i++) {
+            resault *= firstNumder;
         }
         return resault;
     }
