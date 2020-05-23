@@ -2,11 +2,10 @@ import java.util.Scanner;
 
 public class CalculatorTest {
 
+    static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
         Calculator calc = new Calculator();
-        Scanner scanner = new Scanner(System.in);
-
-        String userResponse;
         do {
             System.out.print("Введите первое число: ");
             calc.setFirstNumder(scanner.nextInt());
@@ -15,18 +14,21 @@ public class CalculatorTest {
             System.out.print("Введите второе число: ");
             calc.setSecondNumder(scanner.nextInt());
             System.out.println("Результат: " + calc.calculate());
-            System.out.print("Хотите продолжить? [да/нет]: ");
-            userResponse = validationUserResponse(scanner.next());
-        } while (userResponse.equalsIgnoreCase("да"));
+            if (validationUserResponse()) {
+                break;
+            }
+        } while (true);
     }
 
-    private static String validationUserResponse(String userResponse) {
-        Scanner scanner = new Scanner(System.in);
-        if ((userResponse.equalsIgnoreCase("да")) || (userResponse.equalsIgnoreCase("нет"))) {
-            return userResponse;
+    private static boolean validationUserResponse() {
+        System.out.print("Хотите продолжить? [да/нет]: ");
+        String userResponse = scanner.next();
+        if (userResponse.equalsIgnoreCase("да")) {
+            return false;
+        } else if (userResponse.equalsIgnoreCase("нет")) {
+            return true;
         } else {
-            System.out.print("Хотите продолжить? [да/нет]: ");
-            return validationUserResponse(scanner.next());
+            return validationUserResponse();
         }
     }
 }

@@ -3,31 +3,34 @@ import java.util.Scanner;
 
 public class GuessNumberTest {
 
+    static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         Random rnd = new Random();
         // инициализация игроков
         System.out.print("Игрок 1 введите свое имя: ");
-        Player playerOne = new Player(sc.next());
+        Player playerOne = new Player(scanner.next());
         System.out.print("Игрок 2 введите свое имя: ");
-        Player playerTwo = new Player(sc.next());
+        Player playerTwo = new Player(scanner.next());
         // запуск игры
-        String userResponse;
         do {
             GuessNumber gn = new GuessNumber(rnd.nextInt(101), playerOne, playerTwo);
             gn.startGame();
-            System.out.print("Хотите продолжить? [да/нет]: ");
-            userResponse = validationUserResponse(sc.next());
-        } while (userResponse.equalsIgnoreCase("да"));
+            if (validationUserResponse()) {
+                break;
+            }
+        } while (true);
     }
 
-    private static String validationUserResponse(String userResponse) {
-        Scanner scanner = new Scanner(System.in);
-        if ((userResponse.equalsIgnoreCase("да")) || (userResponse.equalsIgnoreCase("нет"))) {
-            return userResponse;
+    private static boolean validationUserResponse() {
+        System.out.print("Хотите продолжить? [да/нет]: ");
+        String userResponse = scanner.next();
+        if (userResponse.equalsIgnoreCase("да")) {
+            return false;
+        } else if (userResponse.equalsIgnoreCase("нет")) {
+            return true;
         } else {
-            System.out.print("Хотите продолжить? [да/нет]: ");
-            return validationUserResponse(scanner.next());
+            return validationUserResponse();
         }
     }
 }
