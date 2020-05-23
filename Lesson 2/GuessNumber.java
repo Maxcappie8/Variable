@@ -1,4 +1,3 @@
-import java.util.Random;
 import java.util.Scanner;
 
 public class GuessNumber {
@@ -34,15 +33,15 @@ public class GuessNumber {
         if (number == randomNumber) {
             System.out.println(playerName + " выйграл(а)!");
             return true;
+        } else if (number < randomNumber) {
+            System.out.println(playerName + " не угадал(а)! Загаданное число больше.");
+            return false;
         } else {
-            if (number < randomNumber) {
-                System.out.println(playerName + " не угадал(а)! Загаданное число больше.");
-            } else {
-                System.out.println(playerName + " не угадал(а)! Загаданное число меньше.");
-            }
+            System.out.println(playerName + " не угадал(а)! Загаданное число меньше.");
             return false;
         }
     }
 }
+
 
 
