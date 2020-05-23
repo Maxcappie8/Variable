@@ -4,20 +4,12 @@ public class Calculator {
     private char operation;
     private int secondNumder;
 
-    public int getFirstNumder() {
-        return firstNumder;
-    }
-
     public void setFirstNumder(int firstNumder) {
         if (firstNumder > -1) {
             this.firstNumder = firstNumder;
         } else {
             System.out.println("Используйте целые положительные числа!");
         }
-    }
-
-    public char getOperation() {
-        return operation;
     }
 
     public void setOperation(char operation) {
@@ -29,14 +21,12 @@ public class Calculator {
         }
     }
 
-    public int getSecondNumder() {
-        return secondNumder;
-    }
-
     public void setSecondNumder(int secondNumder) {
         if (secondNumder > -1) {
             if (((operation == '/') || (operation == '%')) && (secondNumder == 0)) {
-                System.out.println("Деление на 0. Введите корректное число!");
+                // костыль, чтобы при выполнении деления не падала программа, по умолчанию secondNumder инициализируется 0
+                this.secondNumder = 1;
+                System.out.println("!!!Ошибка!!! Деление на 0. Введите корректное число!");
             } else {
                 this.secondNumder = secondNumder;
             }
@@ -46,7 +36,7 @@ public class Calculator {
     }
 
     public int calculate() {
-        int resault = 0;
+        int result = 0;
         switch (operation) {
             case '+':
                 return firstNumder + secondNumder;
@@ -57,23 +47,18 @@ public class Calculator {
             case '^':
                 return exp(firstNumder,secondNumder);
             case '/':
-                if (secondNumder != 0) {
                     return firstNumder / secondNumder;
-                }
             case '%':
-                if (secondNumder != 0) {
                     return firstNumder % secondNumder;
-                }
-            default:
         }
-        return resault;
+        return result;
     }
 
     private int exp(int firstNumder, int secondNumder) {
-        int resault = 1;
+        int result = 1;
         for (int i = 0; i < secondNumder; i++) {
-            resault *= firstNumder;
+            result *= firstNumder;
         }
-        return resault;
+        return result;
     }
 }
