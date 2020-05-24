@@ -16,21 +16,18 @@ public class GuessNumberTest {
         do {
             GuessNumber gn = new GuessNumber(rnd.nextInt(101), playerOne, playerTwo);
             gn.startGame();
-            if (validationUserResponse()) {
-                break;
-            }
-        } while (true);
+        } while (validateUserResponse());
     }
 
-    private static boolean validationUserResponse() {
+    private static boolean validateUserResponse() {
         System.out.print("Хотите продолжить? [да/нет]: ");
         String userResponse = scanner.next();
         if (userResponse.equalsIgnoreCase("да")) {
-            return false;
-        } else if (userResponse.equalsIgnoreCase("нет")) {
             return true;
+        } else if (userResponse.equalsIgnoreCase("нет")) {
+            return false;
         } else {
-            return validationUserResponse();
+            return validateUserResponse();
         }
     }
 }
