@@ -75,7 +75,9 @@ public class GuessNumber {
         }
         System.out.print("Его попытки: ");
         for (int index : player.getEnteredValues()) {
-            System.out.print(index + " ");
+            if (index != 0) {
+                System.out.print(index + " ");
+            }
         }
         System.out.println();
     }
