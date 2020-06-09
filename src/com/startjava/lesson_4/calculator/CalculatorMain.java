@@ -9,7 +9,7 @@ public class CalculatorMain {
     public static void main(String[] args) {
         Calculator calc = new Calculator();
         do {
-            calc.setInputField();
+            calc.setMathExpression();
             System.out.println(" = " + calc.calculate());
         } while (validateUserResponse());
     }
