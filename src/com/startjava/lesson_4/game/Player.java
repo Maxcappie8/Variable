@@ -5,8 +5,7 @@ import java.util.Arrays;
 public class Player {
 
     private String name;
-    private int number;
-    private int[] enteredNums = new int[10];
+    private int[] enteredNumbers = new int[10];
     private int attempt = 0;
 
     public Player(String name) {
@@ -17,25 +16,12 @@ public class Player {
         return name;
     }
 
-    public int getNumber() {
-        return number;
+    public int[] getEnteredNumbers() {
+        return Arrays.copyOf(enteredNumbers, attempt + 1);
     }
 
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public int[] getEnteredNums() {
-        for (int i = 0; i < enteredNums.length; i++) {
-            if (enteredNums[i] == 0) {
-                return Arrays.copyOf(enteredNums, i);
-            }
-        }
-        return Arrays.copyOf(enteredNums, enteredNums.length);
-    }
-
-    public void setEnteredNums(int enteredNum) {
-        enteredNums[attempt] = enteredNum;
+    public void setEnteredNumbers(int enteredNum) {
+        enteredNumbers[attempt] = enteredNum;
     }
 
     public int getAttempt() {
@@ -47,11 +33,6 @@ public class Player {
     }
 
     public void fillArrayByZeros() {
-        for (int i = 0; i < enteredNums.length; i++) {
-            if (enteredNums[i] == 0) {
-                Arrays.fill(enteredNums, 0, i, 0);
-            }
-        }
-        Arrays.fill(enteredNums, 0);
+        Arrays.fill(enteredNumbers, 0, attempt, 0);
     }
 }
