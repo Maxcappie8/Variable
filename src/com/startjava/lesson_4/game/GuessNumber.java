@@ -17,15 +17,15 @@ public class GuessNumber {
 
     public void startGame() {
         do {
-            if (!makeMove(playerOne)) {
+            if (makeMove(playerOne)) {
                 break;
             }
-        } while (makeMove(playerTwo));
+        } while (!makeMove(playerTwo));
         showEnteredNumbers(playerOne);
         showEnteredNumbers(playerTwo);
-        playerOne.fillArrayByZeros();
+        playerOne.fillZeros();
         playerOne.setAttempt(0);
-        playerTwo.fillArrayByZeros();
+        playerTwo.fillZeros();
         playerTwo.setAttempt(0);
     }
 
@@ -33,36 +33,34 @@ public class GuessNumber {
         int attempt = 10 - player.getAttempt();
         if (attempt != 0) {
             System.out.print(player.getName() + " [осталось попыток - " + attempt + "] введите ваше число: ");
-            player.setEnteredNumbers(scanner.nextInt());
+            player.setEnteredNumber(scanner.nextInt());
             if (compareNumbers(player)) {
-                return false;
+                return true;
             }
         } else if (attempt == 0) {
             System.out.println("У " + player.getName() + " закончились попытки");
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     private boolean compareNumbers(Player player) {
-        if (player.getEnteredNumbers()[player.getAttempt()] == randomNumber) {
-            player.setAttempt(1 + player.getAttempt());
+        if (player.getLastEnteredNumber() == randomNumber) {
             System.out.println(player.getName() + " выйграл(а)!");
             System.out.println("Игрок " + player.getName() + " угадал число " + randomNumber + " с " + player.getAttempt() + " попытки");
             return true;
-        } else if (player.getEnteredNumbers()[player.getAttempt()] < randomNumber) {
+        } else if (player.getLastEnteredNumber() < randomNumber) {
             System.out.println(player.getName() + " не угадал(а)! Загаданное число больше.");
         } else {
             System.out.println(player.getName() + " не угадал(а)! Загаданное число меньше.");
         }
-        player.setAttempt(1 + player.getAttempt());
         return false;
     }
 
     private void showEnteredNumbers(Player player) {
         System.out.print("Попытки " + player.getName() + ": ");
-        for (int index : player.getEnteredNumbers()) {
-            System.out.print(index + " ");
+        for (int number : player.getEnteredNumbers()) {
+            System.out.print(number + " ");
         }
         System.out.println();
     }
