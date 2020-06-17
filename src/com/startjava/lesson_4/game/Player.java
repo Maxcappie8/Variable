@@ -26,7 +26,7 @@ public class Player {
     }
 
     public int getLastEnteredNumber() {
-        return Arrays.copyOfRange(enteredNumbers, --attempt, ++attempt)[0];
+        return enteredNumbers[attempt - 1];
     }
 
     public int getAttempt() {
